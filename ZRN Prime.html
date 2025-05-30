@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZRN Prime - World's #1 Business Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .btn-accent {
+            background: var(--accent-color);
+        }
+
+        .btn-accent:hover {
+            background: #c0392b;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: white;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .services {
+            background-color: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--light-color);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--light-color);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-text h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+        }
+
+        .stats {
+            background: linear-gradient(rgba(52, 152, 219, 0.9), rgba(52, 152, 219, 0.9)), url('https://images.unsplash.com/photo-1434626881859-194d67b2b86f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            font-size: 1.2rem;
+        }
+
+        .service-detail {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .service-detail:nth-child(even) {
+            background-color: #f5f7fa;
+        }
+
+        .service-hero {
+            height: 60vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .service-hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .service-hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .ai-use-cases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .ai-case {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .ai-case:hover {
+            transform: translateY(-5px);
+        }
+        
+        .ai-case h3 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .contact {
+            background-color: white;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+        }
+
+        .newsletter {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .newsletter h2 {
+            margin-bottom: 20px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .newsletter-form button {
+            padding: 15px 30px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+
+        .python-console {
+            background-color: #1e1e1e;
+            color: #f8f8f8;
+            padding: 20px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin-top: 30px;
+        }
+
+        .python-console h3 {
+            color: #f8f8f8;
+            margin-bottom: 15px;
+        }
+
+        #python-output {
+            height: 200px;
+            overflow-y: auto;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #444;
+            padding-bottom: 15px;
+        }
+
+        #python-code {
+            width: 100%;
+            height: 100px;
+            background-color: #2d2d2d;
+            color: #f8f8f8;
+            border: 1px solid #444;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--light-color);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #bdc3c7;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                order: -1;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input {
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
+
+            .newsletter-form button {
+                border-radius: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">ZRN<span>Prime</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#python">Python Tools</a></li>
+                </ul>
+                <div class="mobile-menu">☰</div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>World's Leading Business Solutions</h1>
+                <p>Empowering enterprises with cutting-edge technology, innovative strategies, and unparalleled expertise to drive growth and success in the digital age.</p>
+                <a href="#services" class="btn">Explore Services</a>
+                <a href="#contact" class="btn btn-accent">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Premium Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3>Business Analytics</h3>
+                    <p>Harness the power of data with our advanced analytics solutions to make informed decisions and drive growth.</p>
+                    <a href="#business-analytics" class="btn">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>Digital Transformation</h3>
+                    <p>Modernize your operations with our comprehensive digital transformation strategies tailored to your business needs.</p>
+                    <a href="#digital-transformation" class="btn">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3>AI Solutions</h3>
+                    <p>Leverage artificial intelligence to automate processes, enhance customer experiences, and gain competitive advantage.</p>
+                    <a href="#ai-solutions" class="btn">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔒</div>
+                    <h3>Cybersecurity</h3>
+                    <p>Protect your business from evolving threats with our state-of-the-art security solutions and protocols.</p>
+                    <a href="#cybersecurity" class="btn">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">☁️</div>
+                    <h3>Cloud Services</h3>
+                    <p>Scale effortlessly with our secure, reliable, and high-performance cloud computing solutions.</p>
+                    <a href="#cloud-services" class="btn">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Mobile Solutions</h3>
+                    <p>Engage your customers anywhere with our custom mobile applications designed for optimal performance.</p>
+                    <a href="#mobile-solutions" class="btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <h2 class="section-title">About ZRN Prime</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Redefining Business Excellence Since 2025</h2>
+                    <p>ZRN Prime was founded with a vision to transform businesses through technology and innovation. What started as a small consultancy has grown into a global leader in business solutions.</p>
+                    <p>Our team of over 500 experts across 20 countries brings diverse perspectives and deep expertise to every project. We believe in building long-term partnerships with our clients, helping them navigate the complexities of the digital landscape.</p>
+                    <p>At GlobalPrime, we don't just deliver solutions - we deliver results that matter. Our approach combines cutting-edge technology with proven business strategies to create measurable impact.</p>
+                    <a href="#contact" class="btn">Learn More About Us</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="GlobalPrime Team">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>250+</h3>
+                    <p>Fortune 500 Clients</p>
+                </div>
+                <div class="stat-item">
+                    <h3>98%</h3>
+                    <p>Client Retention Rate</p>
+                </div>
+                <div class="stat-item">
+                    <h3>40+</h3>
+                    <p>Countries Served</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24/7</h3>
+                    <p>Global Support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Analytics Service Detail -->
+    <section class="service-detail" id="business-analytics">
+        <div class="service-hero" style="background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;">
+            <div class="container">
+                <div class="service-hero-content">
+                    <h1>Business Analytics Solutions</h1>
+                    <p>Transform raw data into actionable insights with our cutting-edge analytics platform and expert consulting services.</p>
+                    <a href="#contact" class="btn">Get Started</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Data-Driven Decision Making</h2>
+                    <p>Our Business Analytics services help organizations harness the power of their data to uncover valuable insights, predict trends, and make informed strategic decisions. We combine advanced analytical tools with industry expertise to deliver solutions tailored to your specific business needs.</p>
+                    
+                    <h3>Our Analytics Solutions Include:</h3>
+                    <ul>
+                        <li>Predictive Analytics and Forecasting</li>
+                        <li>Customer Behavior Analysis</li>
+                        <li>Operational Performance Dashboards</li>
+                        <li>Real-time Business Intelligence</li>
+                        <li>Data Visualization and Reporting</li>
+                        <li>Machine Learning Models for Business Insights</li>
+                    </ul>
+                    
+                    <h3>Implementation Process</h3>
+                    <ol>
+                        <li><strong>Assessment:</strong> Evaluate your current data infrastructure and business goals</li>
+                        <li><strong>Strategy:</strong> Develop a customized analytics roadmap</li>
+                        <li><strong>Implementation:</strong> Deploy tools and integrate data sources</li>
+                        <li><strong>Training:</strong> Empower your team with knowledge and skills</li>
+                        <li><strong>Optimization:</strong> Continuous improvement and support</li>
+                    </ol>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Business Analytics">
+                </div>
+            </div>
+        </div>
+        <div class="container" style="margin-top: 50px;">
+            <h2 class="section-title">Success Stories</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Retail Chain Optimization</h3>
+                    <p>Helped a national retailer increase profits by 18% through inventory optimization and customer segmentation analytics.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Financial Risk Modeling</h3>
+                    <p>Developed predictive models for a banking client that reduced bad loans by 23% while maintaining growth.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Healthcare Analytics</h3>
+                    <p>Implemented patient flow analytics that reduced wait times by 35% for a hospital network.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Digital Transformation Service Detail -->
+    <section class="service-detail" id="digital-transformation">
+        <div class="service-hero" style="background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;">
+            <div class="container">
+                <div class="service-hero-content">
+                    <h1>Digital Transformation Services</h1>
+                    <p>Future-proof your business with our comprehensive digital transformation strategies and implementation services.</p>
+                    <a href="#contact" class="btn">Start Your Transformation</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Reimagine Your Business for the Digital Age</h2>
+                    <p>Our Digital Transformation services help organizations leverage technology to fundamentally change how they operate and deliver value to customers. We take a holistic approach that considers people, processes, and technology to create sustainable competitive advantage.</p>
+                    
+                    <h3>Our Transformation Framework:</h3>
+                    <ul>
+                        <li><strong>Digital Strategy:</strong> Align technology with business objectives</li>
+                        <li><strong>Process Automation:</strong> Streamline operations with RPA and AI</li>
+                        <li><strong>Customer Experience:</strong> Redesign digital touchpoints</li>
+                        <li><strong>Data Foundation:</strong> Build infrastructure for data-driven decisions</li>
+                        <li><strong>Cloud Migration:</strong> Modernize your technology stack</li>
+                        <li><strong>Change Management:</strong> Ensure successful adoption</li>
+                    </ul>
+                    
+                    <h3>Key Benefits:</h3>
+                    <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                        <div class="service-card">
+                            <div class="service-icon">⏱️</div>
+                            <h4>Operational Efficiency</h4>
+                            <p>Reduce costs and improve productivity through automation</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">📊</div>
+                            <h4>Improved Agility</h4>
+                            <p>Respond faster to market changes and opportunities</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">😊</div>
+                            <h4>Enhanced CX</h4>
+                            <p>Deliver seamless digital experiences to customers</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Digital Transformation">
+                </div>
+            </div>
+        </div>
+        <div class="container" style="margin-top: 50px;">
+            <h2 class="section-title">Our Transformation Roadmap</h2>
+            <div style="display: flex; flex-direction: column; gap: 30px;">
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <div style="background: var(--secondary-color); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+                    <div>
+                        <h3>Assessment & Vision</h3>
+                        <p>Comprehensive evaluation of current state and definition of digital vision</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <div style="background: var(--secondary-color); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+                    <div>
+                        <h3>Strategy Development</h3>
+                        <p>Create prioritized roadmap with quick wins and long-term initiatives</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <div style="background: var(--secondary-color); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+                    <div>
+                        <h3>Pilot Implementation</h3>
+                        <p>Execute high-impact pilot projects to demonstrate value</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <div style="background: var(--secondary-color); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">4</div>
+                    <div>
+                        <h3>Scale & Optimize</h3>
+                        <p>Expand successful pilots and continuously improve</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Solutions Service Detail -->
+    <section class="service-detail" id="ai-solutions">
+        <div class="service-hero" style="background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1677442135136-760c813a743d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;">
+            <div class="container">
+                <div class="service-hero-content">
+                    <h1>Artificial Intelligence Solutions</h1>
+                    <p>Harness the power of AI to drive innovation, efficiency, and competitive advantage in your business.</p>
+                    <a href="#contact" class="btn">Explore AI Possibilities</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Transform Your Business with AI</h2>
+                    <p>Our AI Solutions leverage cutting-edge machine learning, natural language processing, and computer vision technologies to solve complex business challenges and create new opportunities for growth.</p>
+                    
+                    <h3>Our AI Capabilities:</h3>
+                    <ul>
+                        <li><strong>Predictive Analytics:</strong> Forecast trends and behaviors with high accuracy</li>
+                        <li><strong>Natural Language Processing:</strong> Extract insights from unstructured text data</li>
+                        <li><strong>Computer Vision:</strong> Automate visual inspection and analysis</li>
+                        <li><strong>Recommendation Engines:</strong> Personalize customer experiences</li>
+                        <li><strong>Process Automation:</strong> Intelligent automation of complex workflows</li>
+                        <li><strong>Generative AI:</strong> Create content, designs, and solutions</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1677442135139-34e5d1f354e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="AI Solutions">
+                </div>
+            </div>
+        </div>
+        <div class="container" style="margin-top: 50px;">
+            <h2 class="section-title">AI Applications Across Industries</h2>
+            <div class="ai-use-cases">
+                <div class="ai-case">
+                    <h3>Retail & E-commerce</h3>
+                    <p>Personalized recommendations, demand forecasting, visual search, and dynamic pricing</p>
+                </div>
+                <div class="ai-case">
+                    <h3>Healthcare</h3>
+                    <p>Medical imaging analysis, drug discovery, patient risk stratification, and virtual assistants</p>
+                </div>
+                <div class="ai-case">
+                    <h3>Financial Services</h3>
+                    <p>Fraud detection, credit scoring, algorithmic trading, and chatbots for customer service</p>
+                </div>
+                <div class="ai-case">
+                    <h3>Manufacturing</h3>
+                    <p>Predictive maintenance, quality control, supply chain optimization, and robotics</p>
+                </div>
+                <div class="ai-case">
+                    <h3>Marketing</h3>
+                    <p>Customer segmentation, sentiment analysis, content generation, and campaign optimization</p>
+                </div>
+                <div class="ai-case">
+                    <h3>Human Resources</h3>
+                    <p>Resume screening, employee retention prediction, skills gap analysis, and training recommendations</p>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="margin-top: 50px;">
+            <h2 class="section-title">Our AI Technology Stack</h2>
+            <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px; margin-top: 40px;">
+                <div style="text-align: center;">
+                    <img src="https://logo.clearbit.com/tensorflow.org" alt="TensorFlow" style="height: 60px;">
+                    <p>TensorFlow</p>
+                </div>
+                <div style="text-align: center;">
+                    <img src="https://logo.clearbit.com/pytorch.org" alt="PyTorch" style="height: 60px;">
+                    <p>PyTorch</p>
+                </div>
+                <div style="text-align: center;">
+                    <img src="https://logo.clearbit.com/openai.com" alt="OpenAI" style="height: 60px;">
+                    <p>OpenAI</p>
+                </div>
+                <div style="text-align: center;">
+                    <img src="https://logo.clearbit.com/aws.amazon.com" alt="AWS AI" style="height: 60px;">
+                    <p>AWS AI</p>
+                </div>
+                <div style="text-align: center;">
+                    <img src="https://logo.clearbit.com/azure.microsoft.com" alt="Azure AI" style="height: 60px;">
+                    <p>Azure AI</p>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="margin-top: 50px;">
+            <div class="python-console">
+                <h3>Try Our AI Business Demo</h3>
+                <div id="ai-demo-output">This demo predicts customer churn based on sample data. Try changing the values below.</div>
+                <div style="margin: 20px 0;">
+                    <label for="ai-usage">Usage Frequency (times/month):</label>
+                    <input type="range" id="ai-usage" min="1" max="30" value="10" style="width: 100%;">
+                    <span id="usage-value">10</span>
+                </div>
+                <div style="margin: 20px 0;">
+                    <label for="ai-satisfaction">Satisfaction Score (1-10):</label>
+                    <input type="range" id="ai-satisfaction" min="1" max="10" value="7" style="width: 100%;">
+                    <span id="satisfaction-value">7</span>
+                </div>
+                <button id="run-ai-demo" class="btn btn-accent">Predict Churn Risk</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cybersecurity Service Detail -->
+    <section class="service-detail" id="cybersecurity">
+        <div class="service-hero" style="background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;">
+            <div class="container">
+                <div class="service-hero-content">
+                    <h1>Cybersecurity Solutions</h1>
+                    <p>Protect your digital assets with our comprehensive cybersecurity services and threat intelligence.</p>
+                    <a href="#contact" class="btn">Secure Your Business</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Enterprise-Grade Security</h2>
+                    <p>In today's threat landscape, cybersecurity is not optional. Our solutions provide multi-layered protection for your systems, data, and infrastructure against evolving cyber threats.</p>
+                    
+                    <h3>Our Cybersecurity Services:</h3>
+                    <ul>
+                        <li><strong>Risk Assessment:</strong> Identify vulnerabilities in your systems</li>
+                        <li><strong>Managed Security:</strong> 24/7 monitoring and threat detection</li>
+                        <li><strong>Incident Response:</strong> Rapid containment and recovery</li>
+                        <li><strong>Compliance:</strong> Meet regulatory requirements (GDPR, HIPAA, etc.)</li>
+                        <li><strong>Security Training:</strong> Educate your workforce on best practices</li>
+                        <li><strong>Penetration Testing:</strong> Simulate attacks to find weaknesses</li>
+                    </ul>
+                    
+                    <h3>Key Benefits:</h3>
+                    <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                        <div class="service-card">
+                            <div class="service-icon">🛡️</div>
+                            <h4>Comprehensive Protection</h4>
+                            <p>Defend against all types of cyber threats</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">🔍</div>
+                            <h4>Continuous Monitoring</h4>
+                            <p>Real-time detection of suspicious activities</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">⚡</div>
+                            <h4>Rapid Response</h4>
+                            <p>Minimize damage from security incidents</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cybersecurity">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cloud Services Detail -->
+    <section class="service-detail" id="cloud-services">
+        <div class="service-hero" style="background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;">
+            <div class="container">
+                <div class="service-hero-content">
+                    <h1>Cloud Services</h1>
+                    <p>Accelerate innovation with our secure, scalable, and high-performance cloud solutions.</p>
+                    <a href="#contact" class="btn">Migrate to Cloud</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Cloud Computing Excellence</h2>
+                    <p>Our Cloud Services help businesses of all sizes leverage the power of cloud computing to reduce costs, improve agility, and scale effortlessly. We provide end-to-end cloud solutions from migration to optimization.</p>
+                    
+                    <h3>Our Cloud Offerings:</h3>
+                    <ul>
+                        <li><strong>Cloud Strategy:</strong> Assessment and roadmap development</li>
+                        <li><strong>Migration Services:</strong> Seamless transition to cloud</li>
+                        <li><strong>Cloud Architecture:</strong> Design for performance and security</li>
+                        <li><strong>Managed Services:</strong> Ongoing support and optimization</li>
+                        <li><strong>Hybrid Cloud:</strong> Bridge between on-prem and cloud</li>
+                        <li><strong>Cloud Security:</strong> Protect your cloud environment</li>
+                    </ul>
+                    
+                    <h3>Supported Platforms:</h3>
+                    <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px; margin-top: 30px;">
+                        <div style="text-align: center;">
+                            <img src="https://logo.clearbit.com/aws.amazon.com" alt="AWS" style="height: 50px;">
+                            <p>Amazon Web Services</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <img src="https://logo.clearbit.com/azure.microsoft.com" alt="Azure" style="height: 50px;">
+                            <p>Microsoft Azure</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <img src="https://logo.clearbit.com/cloud.google.com" alt="Google Cloud" style="height: 50px;">
+                            <p>Google Cloud</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cloud Services">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Solutions Detail -->
+    <section class="service-detail" id="mobile-solutions">
+        <div class="service-hero" style="background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;">
+            <div class="container">
+                <div class="service-hero-content">
+                    <h1>Mobile Solutions</h1>
+                    <p>Create engaging mobile experiences that connect with your customers anywhere, anytime.</p>
+                    <a href="#contact" class="btn">Build Your App</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Mobile-First Experiences</h2>
+                    <p>In today's mobile-centric world, having a robust mobile presence is essential. Our Mobile Solutions help businesses create intuitive, high-performance applications that drive engagement and revenue.</p>
+                    
+                    <h3>Our Mobile Development Services:</h3>
+                    <ul>
+                        <li><strong>Custom App Development:</strong> iOS, Android, and cross-platform</li>
+                        <li><strong>UI/UX Design:</strong> Intuitive and engaging interfaces</li>
+                        <li><strong>Enterprise Mobility:</strong> Internal business applications</li>
+                        <li><strong>App Modernization:</strong> Update legacy applications</li>
+                        <li><strong>API Integration:</strong> Connect with backend systems</li>
+                        <li><strong>App Store Optimization:</strong> Maximize visibility and downloads</li>
+                    </ul>
+                    
+                    <h3>Development Approach:</h3>
+                    <div style="display: flex; flex-direction: column; gap: 20px; margin-top: 20px;">
+                        <div style="display: flex; align-items: flex-start; gap: 15px;">
+                            <div style="background: var(--secondary-color); color: white; padding: 5px 10px; border-radius: 5px;">1</div>
+                            <div>
+                                <h4 style="margin-bottom: 5px;">Discovery</h4>
+                                <p>Understand your business goals and user needs</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: flex-start; gap: 15px;">
+                            <div style="background: var(--secondary-color); color: white; padding: 5px 10px; border-radius: 5px;">2</div>
+                            <div>
+                                <h4 style="margin-bottom: 5px;">Design</h4>
+                                <p>Create wireframes and prototypes for validation</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: flex-start; gap: 15px;">
+                            <div style="background: var(--secondary-color); color: white; padding: 5px 10px; border-radius: 5px;">3</div>
+                            <div>
+                                <h4 style="margin-bottom: 5px;">Development</h4>
+                                <p>Build the application with agile methodology</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: flex-start; gap: 15px;">
+                            <div style="background: var(--secondary-color); color: white; padding: 5px 10px; border-radius: 5px;">4</div>
+                            <div>
+                                <h4 style="margin-bottom: 5px;">Launch & Support</h4>
+                                <p>Deploy to app stores and provide ongoing maintenance</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mobile Solutions">
+                </div>
+            </div>
+        </div>
+        <div class="container" style="margin-top: 50px;">
+            <h2 class="section-title">Our Technology Stack</h2>
+            <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px; margin-top: 30px;">
+                <div style="text-align: center;">
+                    <img src="https://logo.clearbit.com/flutter.dev" alt="Flutter" style="height: 50px;">
+                    <p>Flutter</p>
+                </div>
+                <div style="text-align: center;">
+                    <img src="https://logo.clearbit.com/reactnative.dev" alt="React Native" style="height: 50px;">
+                    <p>React Native</p>
+                </div>
+                <div style="text-align: center;">
+                    <img src="https://logo.clearbit.com/kotlinlang.org" alt="Kotlin" style="height: 50px;">
+                    <p>Kotlin</p>
+                </div>
+                <div style="text-align: center;">
+                    <img src="https://logo.clearbit.com/swift.org" alt="Swift" style="height: 50px;">
+                    <p>Swift</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Python Tools Section -->
+    <section class="section" id="python">
+        <div class="container">
+            <h2 class="section-title">Business Python Tools</h2>
+            <div class="python-console">
+                <h3>Python Business Calculator</h3>
+                <div id="python-output">Output will appear here...</div>
+                <textarea id="python-code" placeholder="Enter Python code here. Example: calculate_profit(50000, 30000)">def calculate_profit(revenue, costs):
+    profit = revenue - costs
+    profit_margin = (profit / revenue) * 100
+    return f"Profit: ${profit:,.2f}, Margin: {profit_margin:.2f}%"
+
+# Try calling the function like this:
+# calculate_profit(50000, 30000)</textarea>
+                <button id="run-python" class="btn">Run Python Code</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p><strong>Email:</strong> zahran.y.k.m@gmail.com</p>
+                    <p><strong>Phone:</strong> +94775289265</p>
+                    <p><strong>Headquarters:</strong> 55/7 Abukkagama, puttalam road, Sri Lanka</p>
+                    <p>Our team is ready to assist you with any inquiries. Whether you're looking for a specific solution or just want to learn more about our services, we'd love to hear from you.</p>
+                    <p>For immediate assistance, please call our 24/7 support line at +94775289265.</p>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company</label>
+                            <input type="text" id="company">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Subscribe to Our Newsletter</h2>
+            <p>Get the latest business insights, technology trends, and company news delivered to your inbox.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ZRN Prime</h3>
+                    <p>World-class business solutions powered by innovation, expertise, and cutting-edge technology.</p>
+                    <div class="social-links">
+                        <a href="#"><i>f</i></a>
+                        <a href="#"><i>in</i></a>
+                        <a href="#"><i>t</i></a>
+                        <a href="#"><i>ig</i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#python">Python Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#business-analytics">Business Analytics</a></li>
+                        <li><a href="#digital-transformation">Digital Transformation</a></li>
+                        <li><a href="#ai-solutions">AI Solutions</a></li>
+                        <li><a href="#cybersecurity">Cybersecurity</a></li>
+                        <li><a href="#cloud-services">Cloud Services</a></li>
+                        <li><a href="#mobile-solutions">Mobile Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">GDPR Compliance</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ZRN Prime. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (window.innerWidth <= 768) {
+                        document.querySelector('.nav-links').style.display = 'none';
+                    }
+                }
+            });
+        });
+
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const company = document.getElementById('company').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would typically send the data to a server
+            console.log('Form submitted:', { name, email, company, message });
+            
+            // Show success message
+            alert(`Thank you, ${name}! Your message has been sent. We'll get back to you soon.`);
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Newsletter Form Submission
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input').value;
+            
+            // Here you would typically send the email to your newsletter service
+            console.log('Newsletter subscription:', email);
+            
+            // Show success message
+            alert(`Thank you for subscribing with ${email}! You'll receive our next newsletter.`);
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Python Execution with Pyodide
+        async function initializePython() {
+            try {
+                // Load Pyodide
+                let pyodide = await loadPyodide({
+                    indexURL: "https://cdn.jsdelivr.net/pyodide/v0.23.4/full/"
+                });
+                
+                // Add some default Python business functions
+                await pyodide.runPythonAsync(`
+                    def calculate_roi(investment, gain):
+                        return (gain - investment) / investment * 100
+                    
+                    def calculate_break_even(fixed_costs, price_per_unit, variable_cost_per_unit):
+                        return fixed_costs / (price_per_unit - variable_cost_per_unit)
+                    
+                    def calculate_npv(discount_rate, cash_flows):
+                        npv = 0
+                        for i, cash_flow in enumerate(cash_flows):
+                            npv += cash_flow / (1 + discount_rate) ** (i + 1)
+                        return npv
+                    
+                    def calculate_cagr(beginning_value, ending_value, years):
+                        return (ending_value / beginning_value) ** (1/years) - 1
+                    
+                    def calculate_profit(revenue, costs):
+                        profit = revenue - costs
+                        profit_margin = (profit / revenue) * 100
+                        return f"Profit: ${profit:,.2f}, Margin: {profit_margin:.2f}%"
+                    
+                    print("Python business calculator ready! Try calling functions like calculate_profit(50000, 30000)")
+                `);
+                
+                // Set up run button
+                document.getElementById('run-python').addEventListener('click', async function() {
+                    const code = document.getElementById('python-code').value;
+                    const outputDiv = document.getElementById('python-output');
+                    
+                    try {
+                        let result = await pyodide.runPythonAsync(code);
+                        if (result !== undefined) {
+                            outputDiv.innerHTML += `\n&gt;&gt;&gt; ${result}`;
+                        } else {
+                            outputDiv.innerHTML += `\n&gt;&gt;&gt; Code executed successfully`;
+                        }
+                    } catch (err) {
+                        outputDiv.innerHTML += `\n&gt;&gt;&gt; Error: ${err.message}`;
+                    }
+                    
+                    // Scroll to bottom of output
+                    outputDiv.scrollTop = outputDiv.scrollHeight;
+                });
+                
+                // Initial message
+                document.getElementById('python-output').textContent = "Python environment loaded successfully!\nBusiness functions available:\n- calculate_roi(investment, gain)\n- calculate_break_even(fixed_costs, price, variable_cost)\n- calculate_npv(discount_rate, cash_flows)\n- calculate_cagr(beginning_value, ending_value, years)\n- calculate_profit(revenue, costs)\n\nTry calling a function or write your own Python code!";
+                
+            } catch (err) {
+                document.getElementById('python-output').textContent = `Error loading Python: ${err.message}`;
+                console.error("Pyodide loading error:", err);
+            }
+        }
+
+        // Initialize Python when the page loads
+        initializePython();
+
+        // Sticky Header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Animate elements when they come into view
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.service-card, .about-content, .contact-container');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Set initial state for animation
+        document.querySelectorAll('.service-card, .about-content, .contact-container').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'all 0.6s ease';
+        });
+
+        // Run on scroll and on load
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+
+        // AI Demo functionality
+        document.getElementById('ai-usage').addEventListener('input', function() {
+            document.getElementById('usage-value').textContent = this.value;
+        });
+        
+        document.getElementById('ai-satisfaction').addEventListener('input', function() {
+            document.getElementById('satisfaction-value').textContent = this.value;
+        });
+        
+        document.getElementById('run-ai-demo').addEventListener('click', function() {
+            const usage = parseInt(document.getElementById('ai-usage').value);
+            const satisfaction = parseInt(document.getElementById('ai-satisfaction').value);
+            
+            // Simple mock AI calculation
+            let churnRisk = (50 - (usage * 1.5) - (satisfaction * 3)) / 100;
+            churnRisk = Math.max(0, Math.min(1, churnRisk)); // Clamp between 0 and 1
+            
+            const riskPercent = Math.round(churnRisk * 100);
+            let riskLevel = "low";
+            if (riskPercent > 60) riskLevel = "high";
+            else if (riskPercent > 30) riskLevel = "medium";
+            
+            const output = document.getElementById('ai-demo-output');
+            output.innerHTML = `
+                <p>Based on usage frequency of ${usage} times/month and satisfaction score of ${satisfaction}/10:</p>
+                <p style="font-size: 1.2rem; margin: 10px 0;"><strong>Predicted Churn Risk: ${riskPercent}% (${riskLevel} risk)</strong></p>
+                <p>${getRecommendation(riskPercent, usage, satisfaction)}</p>
+            `;
+        });
+        
+        function getRecommendation(risk, usage, satisfaction) {
+            if (risk > 60) {
+                return "Recommendation: Immediate intervention needed. Consider loyalty programs, personalized outreach, and product improvements.";
+            } else if (risk > 30) {
+                return "Recommendation: Proactive engagement recommended. Survey customers to identify pain points and improve experience.";
+            } else {
+                return "Recommendation: Maintain current engagement strategies. Continue monitoring for changes in behavior.";
+            }
+        }
+    </script>
+
+    <!-- Load Pyodide for Python execution in browser -->
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
+</body>
+</html>
